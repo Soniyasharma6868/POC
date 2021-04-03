@@ -1,0 +1,160 @@
+{% extends "base/base.html"%}
+{% block body%}
+{% load static %}
+<style>
+.required{
+    color:red;
+}
+ input[type='radio']:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -6px;
+        left: -1px;
+        position: relative;
+        background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+
+    input[type='radio']:checked:after {
+        width: 15px;
+        height: 15px;
+        border-radius: 15px;
+        top: -6px;
+        left: -1px;
+        position: relative;
+        background-color: #ffa500;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+    *{
+    padding:0;
+    box-sizing:border-box;
+    }
+    body{
+    background:reg(219,226,226);
+    }
+    .row1{
+        background:white;
+        border-radius:30px;
+        box-shadow:12px 12px 22px grey;
+        margin:20px 200px;
+        width: 1250px;
+    }
+    img{
+        border-top-left-radius:30px;
+        border-bottom-left-radius:30px;
+    }
+    .btn1{
+        border:none;
+        outline:none;
+        height:50px;
+        width:100%;
+        background-color:black;
+        color:white;
+        border-radius:4px;
+        font-weight:bold;
+    }
+    .btn1:hover{
+        background:white;
+        border:1px solid;
+        color:black;
+    }
+.btn_login{
+  padding: 10px 20px;
+  border: 1px solid #ffc107;
+  display: inline-block;
+  color: #fff;
+  visibility: visible;
+    background: #ffc107;
+}
+.btn_login:hover {
+	background: #fff;
+	color: black;
+	border:1px solid black;
+	text-decoration: none;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+label{
+font-family: 'Montserrat Subrayada', sans-serif;
+font-family: 'Roboto Slab', serif;
+color:black  ;
+font-size:14pt;
+}
+.img-fluid{
+height: 900px;
+width:500px;
+}
+/* On screens that are 992px wide or less, the background color is blue */
+@media screen and (max-width: 992px) {
+    .row1{
+        margin:2%;
+        width:95%;
+    }
+    .img-fluid{
+    height: 800px;
+    width:800px;
+    }
+}
+
+/* On screens that are 600px wide or less, the background color is olive */
+@media screen and (max-width: 600px) {
+
+}
+@media screen and (max-width: 442px) {
+    height: 800px;
+}
+
+</style>
+<section class="Form my-4 mx-4" style="margin-left:-4.5rem!important">
+<div class="main"  style="">
+        <div class="row1">
+        <div class="row no-gutters">
+            <div class="col-lg-5">
+                <img alt="" class="img-fluid" src="{% static 'img/a1.jpg' %}" style="">
+            </div>
+            <div class="col-lg-7 px-5 pt-5">
+
+                <form method="post" style="background-color:white; margin-top: 10px;" id="form_id">
+                {% csrf_token %}
+                    {% for fm in form%}
+                    {{fm.label_tag}} {{fm}} {{fm.errors | striptags}}  <br>
+                    
+                    {% endfor %}
+                <div class="row">
+                    <div align="center" class="col-sm-6">
+                      <button class="btn_login"
+                        style="font-size:14pt; font-weight: bold; font-family:arial;" type="submit">Submit
+                </button>
+            </div>
+            <div align="center" class="col-sm-6">
+                <button class="btn_login"
+                        style="font-size:14pt; font-weight: bold;  font-family:arial;"
+                        type="reset">Cancel
+                </button>
+            </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+        </div>
+
+
+
+    </div>
+</section>
+
+
+
+
+{% endblock %}
